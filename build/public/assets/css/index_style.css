@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+:root{
+    --color-white:#fff;
+    --color-black:#000;
+
+}
+
+*{
+    font-family: "Poppins";
+    /*color: #fff;*/
+}
+
+body{
+    background-color: #000;
+    color: #fff;
+}
+
+
+
+.main__container{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+/*------------------------------- P R E S E N T A C I O N -------------------------------*/
+
+.presentacion__section{
+    width: 70%;
+    /*color: #fff;*/
+}
+
+.presentacion__container{
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.presentacion__header{
+    display: none;
+}
+
+.logo__container{
+    width: 80%;
+    justify-self: center;
+}
+
+
+/*------------------------------- F O R M -------------------------------*/
+
+
+.form__section{
+    width: 85%;
+    border: solid 3px #ffff;
+    border-radius: 10px;
+}
+
+.form__container{
+    width: 75%;
+}
+
+.btn__container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.btn__form{
+    width: max-content;
+}
+
+.btn{
+    width: 150px;
+}
+
+/*------------------------------- M O D A L / F O R M -------------------------------*/
+
+.modal__container{
+    background-color: #000;
+    border: solid #fff 1px;
+    box-shadow: #fff 0px 0px 12px 2px; /*x - y - blur - spread*/
+}
+
+/*.modal-header{
+    color: #fff;
+}*/
+
+.form__input{
+    color: #000;
+}
+
+.password__content_input{
+    height: 37.13px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding-top: 5px;
+}
+
+.password__input:focus{
+    background-color: transparent;
+    outline: none;
+}
+
+@media (max-width: 992px){
+    
+    .main__container{
+        display: block;
+    }
+    
+    .presentacion__container{
+        margin-bottom: 25px;
+
+    }
+
+    .presentacion__header
+    {
+        display: flex;
+        margin: 30px 0 25px 0;
+    }
+    .logo__container{
+        display: none;
+    }
+
+    .logo__container_md{
+        width: 25%;
+    }
+
+    .presentacion__title{
+        font-family: 'Archivo Black', sans-serif;
+        font-size: 100%;
+    }
+
+    .presentacion__text{
+        font-size: x-small;
+    }
+    
+    .form__section{
+        width: 60%;
+    }
+
+        
+    .btn__container{
+        display: block;
+        margin-top: 1.8rem !important;
+    }
+
+    .btn{
+        
+        margin: 10px auto 10px auto !important;
+    }
+
+    .btn__form{
+        font-size: small;
+    }
+}

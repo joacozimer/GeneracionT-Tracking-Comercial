@@ -1,0 +1,46 @@
+<%- include('../partials/head'); %>
+<link rel="stylesheet" href="/assets/css/crearProspecto.css">
+<%- include('../partials/nav'); %>
+    <section class="content">
+        <div class="main__section m-auto">
+            <section class="main__header">
+                <h2 class="pt-2 pb-2 ps-4 mb-0">Nuevo Prospecto</h2> 
+            </section>
+            <section class="main__body ms-4 me-4 mt-2 mb-4">
+                <form enctype="multipart/form-data" class="form__crearProspecto mt-2">
+                    <div class="form__campo_container_1">
+                        <label  class="form__campo_label" for="FormInput">Nombre Proyecto</label>
+                        <input type="text" class="form-control input__bg p-0 ms-0 me-0 ps-2" id="FormNameProjectInput" name="nombre">
+                    </div>
+                    <div  class="form__campo_container_1">
+                        <label  class="form__campo_label" for="FormInput">Plazo de tiempo</label>
+                        <input type="date" class="form-control input__bg text-center p-0 ms-0 me-0 ps-2" id="FormTimeProjectInput" min="" name="plazo">
+                    </div>
+                    <div class="form__campo_container_1">
+                        <label  class="form__campo_label" for="FormInput">Presupuesto</label> 
+                        <input type="number" class="form-control input__bg  p-0 ms-0 me-0 ps-2" id="FormMoneyProjetInput" name="presupuesto">
+                    </div>
+                    <div class="form__campo_container">
+                        <label  class="form__campo_label" for="FormInput">Especificación Técnica</label>
+                        <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" id="FormTecProjectInput" name="espTecnica"></textarea>
+                    </div>
+                    <div class="form__campo_container">
+                        <label  class="form__campo_label" for="FormInput">Descripción Necesidad</label>
+                        <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" id="FormDesProjectInput" name="descripcion"></textarea>
+                    </div>
+                    <div  class="form__campo_container">
+                        <label  class="form__campo_label" for="FormInput">Documentos Adicionales</label>
+                        <div class="input__crearProspecto_files">
+                            <input type="file" class="form-control input__bg  p-0 ms-0 me-0 ps-2" id="FormFileInput" name="archivos" multiple>
+                            <button id="nuevoProspecto" type="submit" class="btn btn-primary mt-2" >Crear Prospecto</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </section>
+</main>
+<script src="/scripts/ListenerNewProspecto.js"></script>
+<script src="/js/sidebar.js"></script>    
+<script src="/js/crearProspecto.js"></script>
+<%- include('../partials/footer'); %>

@@ -1,0 +1,101 @@
+    <%- include('partials/head');%>
+    <link rel="stylesheet" href="/assets/css/index_style.css">
+</head>
+    <body>
+        <main class="main__container align-items-center">
+            <section class="presentacion__section container justify-content-center">
+                <div class="presentacion__container">
+                    <img src="/assets/images/logo.png" alt="" class="logo__container">
+                    <div class="presentacion__header row align-items-center justify-content-around">
+                        <img src="/assets/images/logo.png" alt="" class="logo__container_md col-6 p-0">
+                        <h1 class="presentacion__title text-center text-uppercase col-6 p-0 m-0">Tracking Comercial</h1>
+                    </div>
+                    <p class="presentacion__text text-center mt-md-4">¡Bienvenidos a Tracking Comercial! <BR>Clientes y empleados, juntos seguimos hacia el éxito en el mundo comercial. <BR>¡Gracias por ser parte de nosotros!</p>
+                </div>
+            </section>
+            <section class="form__section justify-content-center m-auto">
+                <div class="form__container m-auto">
+                    <form action="/Login" method="post" class="mt-5">
+                        <div class="mt-5 mb-5">
+                            <label for="FormEmailInput" class="form-label d-none">Correo Electrónico</label>
+                            <input type="email" class="form-control m-auto" id="FormEmailInput" name="email" placeholder="Ingrese su correo electrónico" required>
+                        </div>
+                        <div class="mt-5">
+                            <label for="FormEmailInput" class="form-label d-none">Contraseña</label>
+                            <input type="password" class="form-control m-auto mt-4" id="FormPasswordInput" name="password" placeholder="Ingrese su contraseña" required>
+                        </div>
+                        <div class="btn__container w-100 mt-5 mb-5 text-center">
+                            <button type="button" class="btn__form btn btn-outline-light m-auto" data-bs-toggle="modal" data-bs-target="#modalRegistro" data-bs-target="#staticBackdrop"> Registrarse </button>
+                            <div class="m-auto">
+                                <button type="submit" class="btn__form btn btn-outline-light" id="inisiarSesion"> Iniciar Sesion </button>
+                                <a href="" class="text-center d-none">¿Olvidaste tu contraseña?</a>
+                            </div>
+                        </div>
+                    </form>
+                    <form action="/" method="post" class="mt-5" id="formReg">     
+                        <div class="modal fade" id="modalRegistro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal__container modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Registrate</h1>
+                                </div>
+                                <div class="modal-body mt-4 mb-4 container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-6">
+                                            <input type="text" class="form-control" id="FormNameInput" name="nombre" placeholder="Nombre" required>
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="text" class="form-control" id="FormSurnameInput" name="apellido" placeholder="Apellido" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4">
+                                        <input type="email" class="w-100 form-control" id="FormNewEmailInput" name="correo" placeholder="Ingrese su correo electrónico" required>
+                                    </div>
+                                    <div class="password__content_input form-control w-100 mt-4 align-items-center">
+                                        <input class="password__input border-0 p-0" type="password" id="FormNewPasswordInput" name="contraseña" placeholder="Ingresar contraseña" required>
+                                        <img id="iconPassword" src="/assets/icons/visibility off.svg"></img>
+                                    </div>
+                                    <div class="mt-4">
+                                        <input type="password" class="w-100 form-control" id="FormConfirmPasswordInput" name="confirmPassword" placeholder="Confirmar contraseña" required>
+                                    </div>
+                                    <p id="passwordError" class="error-message"></p>
+                                    <div class="mt-4">
+                                        <input type="tel" class="w-100 form-control" id="FormPhoneInput" name="telefono" placeholder="Ingrese su número de teléfono" name="telefono" placeholder="Ingrese su número de teléfono" pattern="11 +[0-9]{4}-[0-9]{4}" title="Un número de teléfono válido debe un 11, un espacio, tener 4 dígitos, un guión (-) y cuatro dígitos más">
+                                    </div>  
+                                    <label for="" class="mt-4">Fecha de Nacimiento</label>
+                                    <div class="row justify-content-center mt-2">
+                                        <div class="col-4">
+                                            <select class="form__input form-control text-center" id="FormDayInput" name="dia" required>
+                                                <option value="" disabled selected>Dia</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-4">
+                                            <select class="form__input form-control text-center" id="FormMonthInput" name="mes" required>
+                                                <option value="" disabled selected>Mes</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-4">
+                                            <select class="form__input form-control text-center" id="FormYearInput" name="anio" required>
+                                                <option value="" disabled selected>Año</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                  <button type="submit" class="btn btn-primary" id="registrarse">Registrarse</button>
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </head>  
+    <script src="/scripts/script.js"></script>
+    <script src="/js/form.js"></script>
+    <script src="/js/password.js"></script>
+<%- include('partials/footer'); %>

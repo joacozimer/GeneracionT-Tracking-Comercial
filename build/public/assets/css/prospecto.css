@@ -1,0 +1,149 @@
+:root{
+    --color-white:#fff;
+    --color-black:#000;
+}
+
+.main__section{
+    background-color: var(--color-black);
+    width: 100%;
+    height: 100%;
+    border: solid 1px #fff;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+}
+
+.main__header{
+    border-bottom: solid 1px #fff;
+}
+
+.btn{
+    background-color: #000;
+    border: solid 2px #fff;
+    color: var(--color-white);
+}
+
+.btn:hover{
+    background-color: var(--color-white);
+    border: solid 2px #fff;
+    color: var(--color-black);
+}
+
+
+.btn-primary {
+    width: 100%;
+    background-color: var(--color-black); /* Fondo negro */
+    border: 1px solid #fff; /* Borde blanco */
+    color: var(--color-white); /* Texto blanco */
+}
+
+.input__bg {
+    height: 20%;
+    background-color: transparent;
+    border: 1px solid #ffff;
+    color: var(--color-white);
+    outline: none;
+    caret-color: var(--color-white);
+}
+
+.input__bg:disabled {
+    height: 20%;
+    background-color: transparent;
+    border: 1px solid #ffff;
+    color: var(--color-white);
+    outline: none;
+    caret-color: var(--color-white);
+}
+
+.input__bg[type="text"],
+.input__bg[type="date"],
+.input__bg[type="number"]{
+    color: var(--color-white);
+    height: 100%;
+}
+.input__bg[type="file"]{
+    color: var(--color-white);
+    height: 100%;
+}
+
+.input__bg:focus {
+    outline: none;
+    border-color: initial;
+    box-shadow: none;
+    border-color: var(--color-white);
+    background-color: transparent;
+}
+
+/* Estilo para el select */
+select {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 1px solid #fff;
+    outline: none;
+}
+
+/* Estilo para las opciones del select desplegado */
+select option {
+    background-color: #000;
+    color: var(--color-white);
+}
+
+textarea{
+    color: var(--color-white) !important;
+    height: 100% !important;
+    resize: none;
+}
+
+.input__bg::placeholder {
+    color: var(--color-white);
+}
+
+.input__bg:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-white);
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.form__crearProspecto{
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    grid-template-rows: auto 1fr;
+    justify-content: space-between;
+    row-gap: 2em;
+    height: 100%;
+}
+
+.form__campo_container{
+    display: grid;
+    grid-template-rows: 30px;
+}
+
+.form__campo_container_1{
+    display: grid;
+    grid-template-rows: 30px 45px;
+}
+
+.input__crearProspecto_files{
+    display: grid;
+    grid-template-rows: 1fr 50px;
+    align-content: space-between;
+    row-gap: 15px;
+}
+
+@media(max-width:768px){
+
+    .sidebar__container{
+        height: fit-content;
+    }
+    .form__crearProspecto{
+        grid-template-columns: none;
+        justify-content: normal;
+        grid-template-rows: repeat(6, auto);
+    }
+    .form__campo_label{
+        font-size: 85%;
+    }
+
+    textarea{
+        height: 90px !important;
+    }
+}
