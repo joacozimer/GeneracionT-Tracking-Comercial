@@ -1,0 +1,21 @@
+<%- include('../partials/head'); %>
+<link rel="stylesheet" href="/assets/css/nuevoEmpleado.css">
+<%- include('../partials/nav'); %>
+<section class="content">
+    <form action="/inicio" method="post" class="mt-5" ID="nuevoEmpleadoForm">
+        <div class="container__cards row">
+            <input type="text" placeholder="Ingrese el Correo del nuevo Empleado" ID="Correo" name="Correo">
+            <p class="texto">Tipo de Empleado</p>
+            <select name="Tipo_Empleado" ID="Tipo_Empleado">
+                <option value="0" class="Empleado">Tipo Empleado</option>
+                <option value="2" class="Empleado">Técnico</option>
+                <option value="3" class="Empleado">Comercial</option>
+            </select>
+            <button type="submit" class="btn btn-primary mt-2">Convertir en un Empleado</button>        
+        </div>
+    </form>
+</section>
+
+<script src="/js/sidebar.js"></script>  
+<script src="/scripts/ListenerNewEmpleado.js"></script>  
+<%- include('../partials/footer'); %>

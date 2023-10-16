@@ -1,0 +1,77 @@
+<%- include('../partials/head'); %>
+<link rel="stylesheet" href="/assets/css/listaEmpleado.css">
+<%- include('../partials/nav'); %>
+<section class="content">
+    <div class="container__cards_Empleado row">
+        <% Empleado.forEach(Empleado => { %>
+            <div class="card__Empleado" data-empleado='<%- JSON.stringify(Empleado) %>'>
+                <h1 class="mb-3">Nombre: <%= Empleado.nombre %></h1>
+                <h3 class="mb-3">Correo: <%= Empleado.Correo %></h3>
+                <h3 class="mb-3">Telefono: <%= Empleado.telefono %></h3>
+            </div>
+        <% }); %>
+    </div>
+</section>
+
+<%- include('../partials/footer'); %>
+
+<div class="detalles-Empleado-container" style="display:none;">
+    <div class="card__detalles-Empleado">
+        <table class="details-table">
+            <tr>
+                <td>Nombre</td>
+                <td><span class="detail-value" id="nombre"></span></td>
+            </tr>
+            <tr>
+                <td>Apellido</td>
+                <td><span class="detail-value" id="apellido"></span></td>
+            </tr>
+            <tr>
+                <td>Correo</td>
+                <td><span class="detail-value" id="correo"></span></td>
+            </tr>
+            <tr>
+                <td>Contraseña</td>
+                <td><span class="detail-value" id="contrasenia"></span></td>
+            </tr>
+            <tr>
+                <td>Teléfono</td>
+                <td><span class="detail-value" id="telefono"></span></td>
+            </tr>
+            <tr>
+                <td>Fecha de Nacimiento</td>
+                <td><span class="detail-value" id="fechaNacimiento"></span></td>
+            </tr>
+            <tr>
+                <td>Área</td>
+                <td><span class="detail-value" id="areaEmpleado"></span></td>
+            </tr>
+
+        </table>
+        <a href="/ruta/administrarEmpleado" class="btnn btnn-custom-dropdown dropdown-toggle" id="cerrar"><img src="/assets/icons/Xclose.svg" class="xclose"></a>
+    </div>
+</div>
+
+<script src="/js/sidebar.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const tarjetasEmpleado = document.querySelectorAll('.card__Empleado');
+        const detallesEmpleadoContainer = document.querySelector('.detalles-Empleado-container .card__detalles-Empleado');
+
+        tarjetasEmpleado.forEach(tarjeta => {
+            tarjeta.addEventListener('click', () => {
+                const empleadoData = JSON.parse(tarjeta.dataset.empleado);
+                const fechaNacimiento = new Date(empleadoData.fechaNacimiento).toLocaleDateString('en-US');
+                const areaEmpleado = (empleadoData.Cliente_Empleado === 2) ? "Técnica" : "Comercial";
+                document.getElementById('nombre').textContent = empleadoData.nombre;
+                document.getElementById('apellido').textContent = empleadoData.apellido;
+                document.getElementById('correo').textContent = empleadoData.Correo;
+                document.getElementById('contrasenia').textContent = empleadoData.contrasenia;
+                document.getElementById('telefono').textContent = empleadoData.telefono;
+                document.getElementById('fechaNacimiento').textContent = fechaNacimiento;
+                document.getElementById('areaEmpleado').textContent = areaEmpleado;
+                detallesEmpleadoContainer.parentElement.style.display = 'flex';
+            });
+        });
+    });
+</script>

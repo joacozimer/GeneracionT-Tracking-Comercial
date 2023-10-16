@@ -1,0 +1,41 @@
+<%- include('../partials/head'); %>
+<link rel="stylesheet" href="/assets/css/misProspecto.css">
+<%- include('../partials/nav'); %>
+
+<section class="content">
+    <div class='container__cards_Prospecto row'>
+        <% if (ProspectoData && ProspectoData.nombresDeProspecto && ProspectoData.nombresDeProspecto.length > 0) { %>
+            <% for (let i = 0; i < ProspectoData.nombresDeProspecto.length; i++) { %>
+                <% const plazo = new Date(ProspectoData.plazo[i]).toLocaleDateString('en-US'); %>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3"> 
+                    <a href="/ruta/Prospecto/<%= ProspectoData.ID_Prospecto[i] %>/<%= encodeURIComponent(ProspectoData.nombresDeProspecto[i]) %>" class="text-decoration-none"> <!-- Enlace a la página del prospecto -->
+                        <div class="card__Prospecto container p-4 border rounded">
+                            <h3 class="mb-3">Nombre: <%= ProspectoData.nombresDeProspecto[i] %></h3>
+                            <p>Plazo: <%= plazo %></p>
+                            <p class="FormMoneyProjetInput">Presupuesto: <%= ProspectoData.presupuesto[i] %></p>
+                            <p class="estado">Estado: <%= ProspectoData.Tipo[i] %></p>
+                        </div>
+                    </a>
+                </div>
+            <% } %>
+        <% } else { %>
+            <div class="col-12">
+                <p>No hay prospectos disponibles.</p>
+            </div>
+        <% } %>
+    </div>
+</section>
+
+<script src="/js/sidebar.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const elements = document.querySelectorAll('.FormMoneyProjetInput');
+        elements.forEach(function(element) {
+            const valuePresupuesto = element.textContent;
+            const value = valuePresupuesto.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            element.textContent = "Presupuesto: " + value;
+        });
+    });
+</script>
+
+<%- include('../partials/footer'); %>

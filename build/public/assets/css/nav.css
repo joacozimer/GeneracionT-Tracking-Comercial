@@ -101,3 +101,93 @@ nav{
 .content.collapsed {
     transform: translateX(0);
 }
+
+.nav__link {
+    display: grid;
+    border-radius: 15vh;
+    grid-template-columns: 30px 150px;
+    border-bottom: 2px solid transparent; /* Agrega un borde transparente por defecto */
+    box-sizing: border-box; /* Asegura que el borde esté incluido dentro del tamaño del elemento */
+    transition: transform 0.8s ease-out, background-color 0.3s, box-shadow 0.3s;
+}
+
+.nav__link:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Cambia el fondo al pasar el mouse de forma sutil */
+    border-bottom-width: 0; /* Elimina el borde inferior al pasar el mouse */
+    transform: scale(0.9); /* Agranda ligeramente el elemento al pasar el mouse */
+    transition: border-bottom 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+}
+
+.iconoUsuario {
+    position: relative; /* Asegura que el elemento pseudo-elemento esté posicionado correctamente */
+    fill: #ffffff; /* Color del icono */
+    transition: transform 0.3s ease; /* Transición suave para el cambio de tamaño */
+}
+
+.iconoUsuario:hover {
+    transform: scale(1.3); /* Agranda el icono al pasar el cursor */
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+}
+
+.btn_sidebar{
+    position: relative; /* Asegura que el elemento pseudo-elemento esté posicionado correctamente */
+    fill: #ffffff; /* Color del icono */
+    transition: transform 0.3s ease;
+}
+
+.btn_sidebar:hover{
+    transform: scale(1.3); /* Agranda el icono al pasar el cursor */
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+/* Estilos para el elemento de lista del menú desplegable */
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    transition: all 0.3s ease; /* Transición suave para los efectos */
+}
+
+/* Estilos para el elemento de lista del menú desplegable cuando se pasa el mouse */
+.dropdown-item:hover {
+    background-color: #f8f9fa; /* Cambia el color de fondo al pasar el mouse */
+    color: #007bff; /* Cambia el color del texto al pasar el mouse */
+    text-decoration: none;
+}
+
+.btn {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    transition: background-color 0.3s ease;
+    border-color: var(--color-white);
+}
+
+.btn:hover .lupa {
+    filter: invert(100%); /* Invertir los colores de la imagen (de negro a blanco) al pasar el mouse por encima del botón */
+}
+
+/* Estilos para el botón y la imagen cuando el mouse está sobre el botón */
+.btn:hover {
+    background-color: var(--color-white); /* Cambiar el color de fondo del botón cuando el mouse está sobre él */
+}
+
+#EmpleadoIcono{
+    filter: invert(100%);
+    text-decoration: none;
+    list-style: none;
+}
+
+#disponible{
+    filter: invert(100%);
+    text-decoration: none;
+    list-style: none;
+}
