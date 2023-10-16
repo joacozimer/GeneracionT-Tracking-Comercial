@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+
+
+:root{
+    --color-black:#000 !important;
+    --color-white: #fff !important;
+}
+
+*{
+    font-family: "Poppins";
+    color: var(--color-white);
+}
+
+.btn {
+    /* border: solid 2px #fff; */
+    color: var(--color-white);
+    transition: background-color 0.3s ease; /* Agrega una transición suave para el cambio de color de fondo */
+}
+
+.btn:hover {
+    background-color: #126132; /* Tono más oscuro de verde cuando el mouse está sobre el botón */
+    border: solid 2px #fff;
+    color: var(--color-black);
+}
+
+.container__cards_Prospecto {
+    max-height: 78vh;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+
+.card__Prospecto {
+    transition: transform 0.8s ease-out, background-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px;
+}
+
+.card__Prospecto:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+}
+
+.container__cards_Prospecto::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra de desplazamiento */
+    transition: background-color 0.5s ease; /* Transición suave para el cambio de color */
+    
+}
+
+.container__cards_Prospecto::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3); /* Color semi-transparente del "pulgar" de la barra de desplazamiento */
+    border-radius: 5px; /* Bordes redondeados para el "pulgar" */
+    transition: background-color 0.5s ease; /* Transición suave para el cambio de color */
+}
+
+.container__cards_Prospecto::-webkit-scrollbar-thumb:hover {
+    background-color: #fff; /* Color blanco del "pulgar" al pasar el mouse */
+    animation: changeColor 2s infinite alternate; /* Animación para cambiar gradualmente el color */
+}
+
+.container__cards_Prospecto::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.2); /* Color semi-transparente del fondo de la barra de desplazamiento */
+}
+
+.estado{
+    border: 1px solid white;
+    padding:  5px 10px;
+}
+
+
