@@ -38,8 +38,8 @@ document.getElementById('formReg').addEventListener('submit', async function(eve
   
         if (res.ok) {
           Swal.fire({
-            title: 'Registro exitoso !',
-            text: 'El registro se realizo con exito, intente loggearse.',
+            title: 'Usuario Creado',
+            text: 'El usuario fue creado exitosamente, intente loggearse',
             icon: 'success',
             showConfirmButton: false,
             timer: 1000
@@ -49,7 +49,6 @@ document.getElementById('formReg').addEventListener('submit', async function(eve
         }, 1000);
         
         } else {
-          // La solicitud falló, manejar el error mostrando el mensaje del servidor
           const responseJson = await res.json();
           Swal.fire({
             title:'Error en el registro',

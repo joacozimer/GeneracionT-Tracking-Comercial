@@ -10,7 +10,7 @@ try {
     database: 'sql10653891',
     user: 'sql10653891',
     password: 'SzGAPcBkel',
-    Port: 3306
+    port:3306
   });
 } catch (error) {
   console.log("error conectandose a la bd");
