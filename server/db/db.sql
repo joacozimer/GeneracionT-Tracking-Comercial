@@ -10,11 +10,7 @@ CREATE TABLE IF NOT EXISTS Tipo_Empleado(
 );
 
 CREATE TABLE IF NOT EXISTS Usuario(
-<<<<<<< HEAD
-    Correo VARCHAR(255) PRIMARY KEY NOT NULL,
-=======
     Correo VARCHAR(170) PRIMARY KEY NOT NULL,
->>>>>>> a78cc7c41b79055a19cc23801eff147f4e085b0a
     nombre VARCHAR(255) NOT NULL,
     apellido VARCHAR(255) NOT NULL,
     contrasenia VARCHAR(255) NOT NULL,
@@ -106,11 +102,7 @@ DROP PROCEDURE IF EXISTS MoverUsuarioDeClienteAEmpleado;
 
 DELIMITER //
 CREATE PROCEDURE MoverUsuarioDeClienteAEmpleado(
-<<<<<<< HEAD
-    IN Correo_Usuario VARCHAR(255),
-=======
     IN Correo_Usuario VARCHAR(170),
->>>>>>> a78cc7c41b79055a19cc23801eff147f4e085b0a
     IN Cliente_Empleado INT
 )
 BEGIN
@@ -161,16 +153,7 @@ DELIMITER ;
 
 
 CALL MoverUsuarioDeEmpleadoACliente('a@a');
-<<<<<<< HEAD
 CALL MoverUsuarioDeEmpleadoACliente('b@b');
-=======
-CALL MoverUsuarioDeEmpleadoACliente('b@b');
-
-
-
-
-
-
 
 CREATE TABLE IF NOT EXISTS Tipo_Empleado (
     ID INT PRIMARY KEY NOT NULL,
@@ -281,4 +264,3 @@ BEGIN
 END //
 
 DELIMITER ;
->>>>>>> a78cc7c41b79055a19cc23801eff147f4e085b0a

@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,600&display=swap');
 =======
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,600&display=swap'); */
->>>>>>> a78cc7c41b79055a19cc23801eff147f4e085b0a
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+/*>>>>>>> a78cc7c41b79055a19cc23801eff147f4e085b0a
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');*/
 
 
 
@@ -13,11 +13,7 @@
 }
 
 *{
-<<<<<<< HEAD
-    font-family: "Poppins";
-=======
     font-family: "Arial";
->>>>>>> a78cc7c41b79055a19cc23801eff147f4e085b0a
     color: var(--color-white);
 }
 
