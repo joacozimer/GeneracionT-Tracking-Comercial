@@ -1,0 +1,22 @@
+<%- include('../partials/head'); %>
+<link rel="stylesheet" href="/assets/css/misProspecto.css">
+<%- include('../partials/nav'); %>
+<section class="content">
+    <div class="container__cards_Prospecto row">
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+            <% if (Prospecto && Prospecto.nombresDeProspecto && Prospecto.nombresDeProspecto.length > 0) { %>
+                <% for (let i = 0; i < Prospecto.nombresDeProspecto.length; i++) { %>
+                    <a href="/ruta/Prospecto/<%= Prospecto.ID_Prospecto[i] %>/<%= encodeURIComponent(Prospecto.nombresDeProspecto[i]) %>" class="text-decoration-none">
+                        <div class="card__Prospecto container p-4 border rounded">
+                            <h6><%= Prospecto.nombresDeProspecto[i] %></h6>
+                        </div>
+                    </a>
+                <% } %>
+            <% } else {%>
+                <p>No hay prospectos disponibles</p>
+            <% } %>
+        </div>
+    </div>
+</section>
+<script src="/js/sidebar.js"></script>
+<%- include('../partials/footer'); %>

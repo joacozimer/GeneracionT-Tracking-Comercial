@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+
+
+:root{
+    --color-black:#000 !important;
+    --color-white: #fff !important;
+}
+
+*{
+    font-family: "Poppins";
+    color: var(--color-white);
+}
+
+.btn {
+    /* border: solid 2px #fff; */
+    color: var(--color-white);
+    transition: background-color 0.3s ease; /* Agrega una transición suave para el cambio de color de fondo */
+}
+
+.btn:hover {
+    background-color: #126132; /* Tono más oscuro de verde cuando el mouse está sobre el botón */
+    border: solid 2px #fff;
+    color: var(--color-black);
+}

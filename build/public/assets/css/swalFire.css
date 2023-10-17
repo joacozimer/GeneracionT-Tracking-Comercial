@@ -1,0 +1,15 @@
+
+div#swal2-content {
+    color: #545454;
+}
+
+
+body.swal2-shown.swal2-height-auto {
+    height: calc(100% - 32px)!important;
+}
+
+html.swal2-shown.swal2-height-auto {
+    height: calc(100% - 32px)!important;
+}
+
+
