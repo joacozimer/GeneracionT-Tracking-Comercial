@@ -28,7 +28,7 @@ document.getElementById('formReg').addEventListener('submit', async function(eve
       };
   
       try {
-        const res = await fetch('http://localhost:7777', {
+        const res = await fetch('https://generaciont-tracking-comercial-dev-bqpp.1.us-1.fl0.io/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
