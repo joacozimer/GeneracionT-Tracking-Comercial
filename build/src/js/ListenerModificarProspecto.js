@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         try {
-            const response = await fetch(`http://localhost:7777/editarProspecto/${ID_Prospecto}`, {
+            const response = await fetch(`https://generaciont-tracking-comercial-dev-bqpp.1.us-1.fl0.io/editarProspecto/${ID_Prospecto}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         try {
-            const response = await fetch(`http://localhost:7777/editarProspecto/${ID_Prospecto}`, {
+            const response = await fetch(`https://generaciont-tracking-comercial-dev-bqpp.1.us-1.fl0.io/editarProspecto/${ID_Prospecto}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

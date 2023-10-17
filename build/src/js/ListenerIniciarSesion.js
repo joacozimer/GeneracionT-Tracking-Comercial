@@ -16,7 +16,7 @@ document.getElementById('inisiarSesion').addEventListener('submit', async functi
       };
   
       try {
-        const res = await fetch('http://localhost:7777/Login', {
+        const res = await fetch('https://generaciont-tracking-comercial-dev-bqpp.1.us-1.fl0.io/Login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
