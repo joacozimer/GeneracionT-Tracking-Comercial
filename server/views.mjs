@@ -74,7 +74,8 @@ router.use('/ruta/Prospecto/:ID_Prospecto/:nombreDeProspecto', async (req, res) 
       if (error) {
         console.error('Error al obtener los datos del prospecto: ' + error);
         console.log(Prospecto);
-        res.redirect('/'); // Maneja el error redirigiendo a una página de error o realizando otra acción adecuada
+        res.redirect('/');
+        console.log("Redirect 0");
       } else {
         if (req.isAuthenticated()) {
           //const Tipo_Archivo = obtenerIconoPorExtension()
@@ -88,12 +89,14 @@ router.use('/ruta/Prospecto/:ID_Prospecto/:nombreDeProspecto', async (req, res) 
           console.log(Prospecto);
         } else {
           res.redirect('/');
+          console.log("Redirect 1");
         }
       }
     });
   } catch (error) {
     console.error('Error al obtener los datos del prospecto: ' + error);
-    res.redirect('/'); // Maneja el error redirigiendo a una página de error o realizando otra acción adecuada
+    res.redirect('/');
+    console.log("Redirect 2");
   }
 });
 
