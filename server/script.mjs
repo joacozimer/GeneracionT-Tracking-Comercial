@@ -150,13 +150,13 @@ export async function obtenerInfoProspecto(req, res, next) {
         const resultCliente = await connection.query('SELECT ID_Cliente FROM Cliente WHERE Correo_Cliente = ?', [Correo]);
         //console.log('Resultado de la consulta de Cliente:', resultCliente);
         if (resultCliente.length > 0) {
-          const ID_Cliente = resultCliente[0].ID_Cliente; 
+          const ID_Cliente = resultCliente[0][0].ID_Cliente; 
           return (ID_Cliente); 
         }
       } else if (Tipo === 'Empleado') {
         const resultEmpleado = await connection.query('SELECT ID_Empleado FROM Empleado WHERE Correo_Empleado = ?', [Correo]);
         if (resultEmpleado.length > 0) {
-          const ID_Empleado = resultEmpleado[0].ID_Empleado; 
+          const ID_Empleado = resultEmpleado[0][0].ID_Empleado; 
           return (ID_Empleado);
         }
       }
