@@ -24,7 +24,8 @@ app.use((req, res, next) => {
 
   // Configurar la directiva Content-Security-Policy con los valores necesarios
   res.setHeader('Content-Security-Policy', `default-src 'none'; font-src 'self' https://fonts.gstatic.com; script-src 'nonce-${nonce}'`);
-
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   // Pasar el nonce a las plantillas o rutas si es necesario
   res.locals.nonce = nonce;
   next();
