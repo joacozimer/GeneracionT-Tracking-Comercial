@@ -13,24 +13,48 @@
     overflow-y: auto;
 }
 
+
 .main__header{
     border-bottom: solid 1px #fff;
 }
 
-.btn-primary {
-    width: 100%;
-    background-color: var(--color-black);
-    border: 1px solid #fff;
+.btn{
+    background-color: #000;
+    border: solid 2px #fff;
     color: var(--color-white);
-    transition: background-color 1s ease, border-color 0.5s ease; 
 }
 
-.btn-primary:hover {
-    background-color: rgba(255, 255, 255);
-    border-color: rgba(255, 255, 255, 0.5);
+.btn:hover{
+    background-color: var(--color-white);
+    border: solid 2px #fff;
+    color: var(--color-black);
+}
+
+
+.btn-primary {
+    width: 100%;
+    background-color: var(--color-black); /* Fondo negro */
+    border: 1px solid #fff; /* Borde blanco */
+    color: var(--color-white); /* Texto blanco */
+}
+
+.btn-secondary {
+    width: 100%;
+    background-color: var(--color-black); /* Fondo negro */
+    border: 1px solid #fff; /* Borde blanco */
+    color: var(--color-white); /* Texto blanco */
 }
 
 .input__bg {
+    height: 20%;
+    background-color: transparent;
+    border: 1px solid #ffff;
+    color: var(--color-white);
+    outline: none;
+    caret-color: var(--color-white);
+}
+
+.input__bg:disabled {
     height: 20%;
     background-color: transparent;
     border: 1px solid #ffff;
@@ -45,7 +69,6 @@
     color: var(--color-white);
     height: 100%;
 }
-
 .input__bg[type="file"]{
     color: var(--color-white);
     height: 100%;
@@ -59,7 +82,21 @@
     background-color: transparent;
 }
 
-textarea {
+/* Estilo para el select */
+select {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 1px solid #fff;
+    outline: none;
+}
+
+/* Estilo para las opciones del select desplegado */
+select option {
+    background-color: #000;
+    color: var(--color-white);
+}
+
+textarea{
     color: var(--color-white) !important;
     height: 100% !important;
     resize: none;
@@ -74,15 +111,14 @@ textarea {
     transition: background-color 5000s ease-in-out 0s;
 }
 
-.form__crearProspecto{
+.form__Prospecto_Empleado{
     display: grid;
-    grid-template-columns: repeat(3, 30%);
+    grid-template-columns: repeat(4, 23%);
     grid-template-rows: auto 1fr;
     justify-content: space-between;
     row-gap: 2em;
     height: 100%;
 }
-
 
 .form__campo_container{
     display: grid;
@@ -95,23 +131,11 @@ textarea {
 }
 
 
-.input__crearProspecto_files{
+
+.btn__Estado{
     display: grid;
-    grid-template-rows: 1fr 50px;
-    align-content: space-between;
-    row-gap: 15px;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    appearance: none;
-    margin:0;
-}
-
-
-.form__campo_container_show-sidebar {
-    grid-template-rows: 50px!important;
+    grid-template-columns: 45% 45%;
+    justify-content: space-between;
 }
 
 @media(max-width:768px){
@@ -119,10 +143,10 @@ input[type="number"]::-webkit-outer-spin-button {
     .sidebar__container{
         height: fit-content;
     }
-    .form__crearProspecto{
+    .form__Prospecto_Empleado{
         grid-template-columns: none;
         justify-content: normal;
-        grid-template-rows: repeat(6, auto);
+        grid-template-rows: repeat(8, auto);
     }
     .form__campo_label{
         font-size: 85%;
@@ -133,40 +157,17 @@ input[type="number"]::-webkit-outer-spin-button {
     }
 }
 
-input[type="date"]:invalid {
-    color: gray;
+.form__campo_container_show-sidebar {
+    grid-template-rows: 50px!important;
+}
+.form__campo_docAdicionales{
+    display: grid;
+    grid-template-rows: 1fr;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1); /* Inverts the color (for example, white on black background) */
-    cursor: pointer; /* Change the cursor to indicate interactivity */
+.form__campo_docAdicionales .input__bg{
+    height: 100%;
 }
-
-.form-control.input__bg.p-0.ms-0.me-0.ps-2 {
-    /* Estilos básicos para los inputs */
-    border: 1px solid #ccc;
-    color: white;
-    border-radius: 5px;
-}
-
-.form-control.input__bg.p-0.ms-0.me-0.ps-2:hover {
-    background-color: rgba(255, 255, 255, 255, 0.1); /* Cambia el fondo al pasar el mouse */
-    border: 1px solid white; /* Cambia el borde al pasar el mouse */
-    color: white; /* Cambia el color del texto al pasar el mouse */
-    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.7); /* Agrega una sombra al pasar el mouse */
-}
-
-.form-control.input__bg.p-0.ms-0.me-0.ps-2:focus {
-    border: 1px solid white; /* Cambia el color del borde al hacer clic en el input */
-    outline: none; /* Elimina el contorno al enfocar el input */
-    box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.9); /* Agrega una sombra al enfocar el input */
-    
-}
-
-#nuevoProspecto:hover{
-    color: var(--color-black)
-}
-
 
 
 .main__section::-webkit-scrollbar {
@@ -189,7 +190,4 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .main__section::-webkit-scrollbar-track {
     background-color: rgba(0, 0, 0, 0.2); /* Color semi-transparente del fondo de la barra de desplazamiento */
 }
-
-
-
 

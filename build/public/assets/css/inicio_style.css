@@ -13,91 +13,14 @@
     color: var(--color-white);
 }
 
-
-body, html {
-    margin: 0;
-    padding: 0;
-    height: calc(100% - 32px);
-    transition: transform 0.3s;
-    background-color: var(--color-black);
-}
-
-/* n a v b a r */
-
-nav{
-    padding: 0 !important;
-    border-bottom: solid 2px ;
-    border-color: var(--color-white);   
-}
-
-/* Estilo personalizado para el botón dropdown */
-.btnn-custom-dropdown {
-    background-image: none; /* Elimina la flecha */
-    background-color: transparent; /* Establece el fondo como transparente */
-    border: none; /* Elimina el borde */
-    color: #000; /* Establece el color del texto (cambia esto según tus preferencias) */
-    padding-right: 1rem; /* Añade un poco de espacio a la derecha para que no esté demasiado pegado al texto */
-}
-
-.btnn-custom-dropdown::after {
-    content: none; /* Elimina la flecha del botón */
-}
-
-.btnn-custom-dropdown:hover{
-    background-image: none;
-}
-
-.btnn-custom-dropdown:focus{
-    outline: none;
-    box-shadow: none;
-}
-
-.navbar__logo{
-    width: fit-content;
-}
-
-.logo__navbar{
-    width: 90px;
-}
-
-.nav__link{
-    display: grid;
-    grid-template-columns: 30px 150px;
-}
-
-#toggleSidebar{
-    border: 0;
-    background-color: transparent;
-}
-/* s i d e b a r*/
-
-.sidebar__container {
-    display: flex;
-    overflow: hidden;
-    height: calc(100% - 32px);
-}
-
-.sidebar {
-    width: 0px;
+.btn {
+    /* border: solid 2px #fff; */
     color: var(--color-white);
-    transition: width 1s;
-    overflow: hidden;
-    border-right: solid 2px #fff;
+    transition: background-color 0.3s ease; /* Agrega una transición suave para el cambio de color de fondo */
 }
 
-.sidebar.expanded {
-    width: 250px;
-}
-
-
-.content {
-    flex: 1;
-    padding: 20px;
-    transition: transform 1s;
-    transform: translateX(0);
-    background-image: url('../images/fondo.png');
-}
-
-.content.collapsed {
-    transform: translateX(0);
+.btn:hover {
+    background-color: #126132; /* Tono más oscuro de verde cuando el mouse está sobre el botón */
+    border: solid 2px #fff;
+    color: var(--color-black);
 }

@@ -17,14 +17,16 @@ document.addEventListener("DOMContentLoaded", function() {
 const passwordInput = document.getElementById("FormNewPasswordInput");
 const confirmPasswordInput = document.getElementById("FormConfirmPasswordInput");
 const passwordError = document.getElementById("passwordError");
+const submitButton = document.getElementById("registrarse");
+
+// Expresión regular para validar la contraseña
+const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\-]).{8,}$/;
 
 // Función para validar la contraseña
 function validatePassword() {
     const password = passwordInput.value;
     const confirmPassword = confirmPasswordInput.value;
 
-    // Expresión regular para validar la contraseña
-    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\-]).{8,}$/;
     if (!passwordPattern.test(password)) {
         passwordError.textContent = "La contraseña debe contener al menos un dígito, una letra minúscula, una letra mayúscula y un carácter especial. Debe tener al menos 8 caracteres.";
         return false;
@@ -37,9 +39,17 @@ function validatePassword() {
     }
 }
 
-// Funcion para comparar la PK
-    
+// Función para habilitar o deshabilitar el botón de registro
+function toggleSubmitButton() {
+    if (validatePassword()) {
+        submitButton.disabled = false;
+    } else {
+        submitButton.disabled = true;
+    }
+}
 
 // Agrega un evento de escucha para la validación al cambiar el valor de la contraseña
-passwordInput.addEventListener("input", validatePassword);
-confirmPasswordInput.addEventListener("input", validatePassword);
+passwordInput.addEventListener("input", toggleSubmitButton);
+
+// Agrega un evento de escucha para la validación al cambiar el valor de la confirmación de contraseña
+confirmPasswordInput.addEventListener("input", toggleSubmitButton);

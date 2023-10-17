@@ -1,27 +1,37 @@
-    <link rel="stylesheet" href="/assets/css/nav.css">
+<link rel="stylesheet" href="/assets/css/nav.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
 </head>
 <body>
     <nav class="navbar pb-1">
         <div class="container-fluid">
             <div>
-                <button id="toggleSidebar" class="p-0 ms-2 me-2">
+                <button ID="toggleSidebar" class="p-0 ms-2 me-2">
                     <img src="/assets/icons/left panel close.svg" alt="Cerrar" class="btn_sidebar">
                 </button>
-                <a class="navbar-brand" href="/inicio" class="navbar__logo">
+                <a class="navbar-brand" href="/ruta/inicio" class="navbar__logo">
                     <img src="/assets/images/logo.png" alt="" class="logo__navbar">
                 </a>
             </div>
-            
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar . . ." aria-label="Search">
-                <button class="btn btn-success" type="submit"><img src="/assets/icons/search.svg" alt=""></button>
-            </form>
+
+            <% if(user.Tipo_Usuario === "Admin"){ %>
+                <form class="d-flex" role="search" action="/ruta/administrarEmpleado" method="get" >
+                    <input class="form-control me-2" type="search" placeholder="Buscar Empleado" aria-label="Search" ID="searchInput">
+                    <button class="btn btn-success" type="submit"><img class="lupa" src="/assets/icons/search.svg" alt=""></button>
+                </form>
+            <% } %>
+
+            <% if(user.Tipo_Usuario !== "Admin"){ %>
+                <form class="d-flex" role="search" action="/ruta/misProspecto" method="get" >
+                    <input class="form-control me-2" type="search" placeholder="Buscar . . ." aria-label="Search">
+                    <button class="btn btn-success" type="submit"><img class="lupa" src="/assets/icons/search.svg" alt=""></button>
+                </form>
+            <% } %>
             <div class="dropdown show ">
-                <a class="btnn btnn-custom-dropdown dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="/assets/icons/user.svg" alt="">
-                  </a>
+                <a class="btnn btnn-custom-dropdown dropdown-toggle" href="#" role="button" ID="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="/assets/icons/user.svg" class="iconoUsuario">
+                </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="/">Cerrar Sesión</a>
+                  <a class="dropdown-item" href="/">Cerrar Sesion</a>
                 </div>
             </div>
         </div>
@@ -32,40 +42,74 @@
             
             <ul class="navbar-nav mb-4">
                 <li class="nav__item_sidebar nav-item align-items-center ms-2 me-2 mt-2">
-                    <a class="nav-link nav__link active justify-content-evenly align-items-center" aria-current="page" href="/inicio">
+                    <a class="nav-link nav__link active justify-content-evenly align-items-center" aria-current="page" href="/ruta/inicio">
                         <img src="/assets/icons/home.svg" alt="" >
                         <p class="m-0">Inicio</p>
                     </a>
                 </li>
-                <li class="nav__item_sidebar nav-item align-items-center ms-2 me-2">
-                    <a class="nav-link nav__link active justify-content-evenly align-items-center" aria-current="page" href="/crearProspecto">
-                        <img src="/assets/icons/add.svg" alt="" >
-                        <p class="m-0">Crear Prospecto</p>
-                    </a>
-                </li>
-                <li class="nav__item_sidebar nav-item ms-2 me-2 mt-22">
-                    <a class="nav-link nav__link active justify-content-evenly align-items-center" aria-current="page" href="/misProspectos">
-                        <img src="/assets/icons/folder.svg" alt="">
-                        <p class="m-0">Mis Prospectos</p>
-                    </a>
-                </li>
-            </ul>
-            <h6 class="text-center mt-2">Mis Prospectos</h6>
-            <hr class="mt-0 mb-0 ms-auto me-auto pb-1 w-75 text-center">
-            <ul class="navbar-nav">
-                <!--<li class="nav__item_sidebar nav-item align-items-center ms-2 me-2 mt-2">
-                    <a class="nav-link nav__link active justify-content-evenly align-items-center" aria-current="page" href="prospecto.html">
-                        <img src="" alt="">
-                        <p class="m-0">Nombre Prospecto</p>
-                    </a>
-                </li> -->
-                <% for (let i = 0; i < navData[0].length; i++) { %>
-                    <li class="nav__item_sidebar nav-item align-items-center ms-2 me-2 mt-2">
-                        <a class="nav-link nav__link active justify-content-evenly align-items-center" aria-current="page" href="/prospecto">
-                            <img src="" alt="">
-                            <p class="m-0"><%= navData[0][i] %>/<%= navData[1][i] %></p>
+                <% if (user.Tipo_Usuario === 'Cliente') { %>
+                    <li class="nav__item_sidebar nav-item align-items-center ms-2 me-2">
+                        <a class="nav-link nav__link active justify-content-evenly align-items-center" aria-current="page" href="/ruta/crearProspecto">
+                            <img src="/assets/icons/add.svg" alt="" >
+                            <p class="m-0">Crear Prospecto</p>
+                        </a>
+                    </li>
+                    <li class="nav__item_sidebar nav-item ms-2 me-2 mt-22">
+                        <a class="nav-link nav__link active justify-content-evenly align-items-center" aria-current="page" href="/ruta/misProspecto">
+                            <img src="/assets/icons/folder.svg" alt="">
+                            <p class="m-0">Mis Prospectos</p>
                         </a>
                     </li>
                 <% } %>
+
+                <%if(user.Tipo_Usuario === 'Empleado') {%>
+                    <li class="nav__item_sidebar nav-item ms-2 me-2 mt-22">
+                        <a class="nav-link nav__link active justify-content-evenly align-items-center" aria-current="page" href="/ruta/ProspectoDisponibles">
+                            <img ID="disponible" src="/assets/icons/disponible.svg" alt="">
+                            <p class="m-0">Prospectos Disponibles</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item_sidebar nav-item ms-2 me-2 mt-22">
+                        <a class="nav-link nav__link active justify-content-evenly align-items-center" aria-current="page" href="/ruta/misProspecto">
+                            <img src="/assets/icons/folder.svg" alt="">
+                            <p class="m-0">Prospectos Asignados</p>
+                        </a>
+                    </li>
+                <% } %>
+
+                <%if(user.Tipo_Usuario === 'Admin') {%>
+                    <li class="nav__item_sidebar nav-item align-items-center ms-2 me-2 mt-2">
+                        <a class="nav-link nav__link active justify-content-evenly align-items-center" aria-current="page" href="/ruta/nuevoEmpleado">
+                            <img src="/assets/icons/Empleado.svg" ID="EmpleadoIcono">
+                            <p class="m-0">Nuevo Miembro</p>
+                        </a>
+                    </li>
+                        
+                    <li class="nav__item_sidebar nav-item align-items-center ms-2 me-2 mt-2">
+                        <a class="nav-link nav__link active justify-content-evenly align-items-center" aria-current="page" href="/ruta/administrarEmpleado">
+                            <img src="/assets/icons/managerAccount.svg" ID="EmpleadoIcono">
+                            <p class="m-0">Administar Empleado</p>
+                        </a>
+                    </li>
+                <%}%>
             </ul>
+            <%if(user.Tipo_Usuario !== 'Admin') {%>
+                <h6 class="text-center mt-2">Ultimos Prospectos</h6>
+                <hr class="mt-0 mb-0 ms-auto me-auto pb-1 w-75 text-center">
+            
+            <ul class="navbar-nav">
+                <% let max = (ProspectoData.nombresDeProspecto.length > 3)? 3 : ProspectoData.nombresDeProspecto.length %>
+                <% for (let i = 0; i < max; i++) { %>
+                    
+                    <li class="nav__item_sidebar nav-item align-items-center ms-2 me-2 mt-2">
+                        <a class="nav-link nav__link active justify-content-evenly align-items-center" aria-current="page" href=<%= `/ruta/Prospecto/${ProspectoData.ID_Prospecto[i]}/${ProspectoData.nombresDeProspecto[i]}` %>>
+                                <img src="" alt="">
+                                <p class="m-0"><%= ProspectoData.nombresDeProspecto[i]%></p>
+                            </a>
+                    </li>
+                <% } %>
+
+            </ul>
+            <%}%>
         </section>

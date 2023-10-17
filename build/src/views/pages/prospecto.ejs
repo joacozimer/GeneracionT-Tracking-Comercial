@@ -1,44 +1,279 @@
 <%- include('../partials/head'); %>
-<link rel="stylesheet" href="/assets/css/prospecto.css">
+<% if (user.Tipo_Usuario === 'Cliente') { %>
+    <link rel="stylesheet" href="/assets/css/Prospecto.css">
+<% } else{%>
+    <link rel="stylesheet" href="/assets/css/ProspectoEmpleado.css">
+<% }%>
 <%- include('../partials/nav'); %>
     <section class="content">
         <div class="main__section m-auto">
-            <section class="main__header">
-                <h2 class="pt-2 pb-2 ps-4 mb-0"><%=navData[0][0]%></h2>
-            </section>
-            <section class="main__body ms-4 me-4 mt-2 mb-4">
-                <form  action="/prospecto" method="post" enctype="multipart/form-data" class="form__crearProspecto mt-2">
-                    <div class="form__campo_container_1">
-                        <label  class="form__campo_label" for="FormInput">Nombre Proyecto</label>
-                        <input type="text" class="form-control input__bg p-0 ms-0 me-0 ps-2" id="FormNameProjectInput" name="nombre" disabled>
-                    </div>
-                    <div  class="form__campo_container_1">
-                        <label  class="form__campo_label" for="FormInput">Plazo de tiempo</label>
-                        <input type="date" class="form-control input__bg text-center p-0 ms-0 me-0 ps-2" id="FormTimeProjectInput" name="plazo">
-                    </div>
-                    <div class="form__campo_container_1">
-                        <label  class="form__campo_label" for="FormInput">Presupuesto</label> 
-                        <input type="number" class="form-control input__bg  p-0 ms-0 me-0 ps-2" id="FormMoneyProjetInput" name="presupuesto">
-                    </div>
-                    <div class="form__campo_container">
-                        <label  class="form__campo_label" for="FormInput">Especificación Técnica</label>
-                        <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" id="FormTecProjectInput" name="espTecnica"></textarea>
-                    </div>
-                    <div class="form__campo_container">
-                        <label  class="form__campo_label" for="FormInput">Descripción Necesidad</label>
-                        <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" id="FormDesProjectInput" name="descripcion"></textarea>
-                    </div>
-                    <div  class="form__campo_container">
-                        <label  class="form__campo_label" for="FormInput">Documentos Adicionales</label>
-                        <div class="input__crearProspecto_files">
-                            <input type="file" class="form-control input__bg  p-0 ms-0 me-0 ps-2" id="FormFileInput" name="archivos" multiple>
-                            <button id="nuevoProspecto" type="submit" class="btn btn-primary mt-2" >Crear Prospecto</button>
-                        </div>
-                    </div>
-                </form>
+                    <% if (user.Tipo_Usuario === 'Cliente') { %>
+                        <section class="main__header">
+                            <h2 class="pt-2 pb-2 ps-4 mb-0"><%= titulo %></h2>
+                        </section>
+                        <section class="main__body ms-4 me-4 mt-2 mb-4">
+                            <form method="post" enctype="multipart/form-data" class="form__Prospecto mt-2" id="modificarProspecto">
+                                <div class="form__campo_container_1">
+                                    <label  class="form__campo_label" for="FormInput">Estado del prospecto</label> 
+                                    <input type="text" class="form-control input__bg  p-0 ms-0 me-0 ps-2" ID="FormEstadoProjectInput" name="Estado"  value="<%= Prospecto.Tipo %>" disabled>
+                                </div>
+                                <div  class="form__campo_container_1">
+                                    <label  class="form__campo_label" for="FormInput">Plazo de tiempo</label>
+                                    <% if (Prospecto.plazo) { %>
+                                        <% const formattedDate = new Date(Prospecto.plazo).toLocaleDateString('en-US'); %>
+                                        <input type="text" class="form-control input__bg text-center p-0 ms-0 me-0 ps-2" ID="FormTimeProjectInput" name="plazo" value="<%= formattedDate %>" disabled>
+                                    <% } else { %>
+                                        <input type="text" class="form-control input__bg text-center p-0 ms-0 me-0 ps-2" ID="FormTimeProjectInput" name="plazo" value="" disabled>
+                                    <% } %>
+                                </div>
+                            
+                                <div class="form__campo_container_1">
+                                    <label class="form__campo_label" for="FormInput">Presupuesto</label>
+                                    <input type="text" class="form-control input__bg p-0 ms-0 me-0 ps-2" id="FormMoneyProjetInput" name="presupuesto" value="<%= Prospecto.presupuesto %>" disabled>
+                                </div>      
+                                <div class="form__campo_container">
+                                    <label  class="form__campo_label" for="FormInput">Descripción Necesidad</label>
+                                    <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" ID="FormDesProjectInput" name="descripcion" disabled><%= Prospecto.descNecesidad %></textarea>
+                                </div>
+                                <div class="form__campo_container">
+                                    <label  class="form__campo_label" for="FormInput">Especificación Técnica</label>
+                                    <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" ID="FormTecProjectInput" name="espTecnica" disabled><%= Prospecto.especificacionTec %></textarea>
+                                </div>
+                                <div  class="form__campo_container form__campo_container_Archivo">
+                                    <label  class="form__campo_label" for="FormInput">Documentos Adicionales</label>
+                                    <div class="form__campo_docAdicionales">
+                                        <div class="form-control input__bg p-0 ms-0 me-0 ps-2" aria-disabled="true">
+                                            <% if (Prospecto.Archivo && Prospecto.Archivo.length > 0) { %>
+                                                <% Prospecto.Archivo.forEach((Archivo) => { %>
+                                                    <% const nombreArchivo = Archivo.ruta.match(/-(.+)$/)[1]; %>
+                                                    <p>
+                                                        <span class="icono-Archivo">
+                                                            <%= obtenerIconoPorExtension(nombreArchivo) %>
+                                                        </span>
+                                                        <%= nombreArchivo %>
+                                                    </p>
+                                                <% }); %>
+                                            <% } else { %>
+                                                <p>No hay documentos adicionales</p>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                    <% } else { %>
+                        <section class="main__header">
+                            <h2 class="pt-2 pb-2 ps-4 mb-0"><%= titulo %> 
+                                <span class="fs-5 display-2" ID="dataProspecto">/ <%= Prospecto.nombreCliente %> / <%= Prospecto.apellidoCliente %> / <%= Prospecto.Correo_Cliente %></span>
+                            </h2>
+                        </section>
+                        <section class="main__body ms-4 me-4 mt-2 mb-4"> 
+                            <form method="post" enctype="multipart/form-data" class="form__Prospecto_Empleado mt-2">
+                                <div class="form__campo_container_1">
+                                    <label  class="form__campo_label" for="FormInput">Estado del prospecto</label> 
+                                    <input type="text" class="form-control input__bg  p-0 ms-0 me-0 ps-2" ID="FormEstadoProjectInput" name="Estado"  value="<%= Prospecto.Tipo %>" disabled>
+                                </div>
+                                <div  class="form__campo_container_1">
+                                    <label  class="form__campo_label" for="FormInput">Plazo de tiempo</label>
+                                    <% if (Prospecto.plazo) { %>
+                                        <% const formattedDate = new Date(Prospecto.plazo).toLocaleDateString('en-US'); %>
+                                        <input type="text" class="form-control input__bg text-center p-0 ms-0 me-0 ps-2" ID="FormTimeProjectInput" name="plazo" value="<%= formattedDate %>" disabled>
+                                    <% } else { %>
+                                        <input type="text" class="form-control input__bg text-center p-0 ms-0 me-0 ps-2" ID="FormTimeProjectInput" name="plazo" value="" disabled>
+                                    <% } %>
+                                </div>
+                            
+                                <div class="form__campo_container_1">
+                                    <label class="form__campo_label" for="FormInput">Presupuesto</label>
+                                    <input type="text" class="form-control input__bg p-0 ms-0 me-0 ps-2" id="FormMoneyProjetInput" name="presupuesto" value="<%= Prospecto.presupuesto %>" disabled>
+                                </div>                                
+                                <div class="form__campo_container_1">
+                                    <label class="form__campo_label">Aceptacion</label>
+                                    <% if(user.Cliente_Empleado === 2 ) { %>
+                                        <select type="text" class="form-control input__bg p-0 ms-0 me-0 ps-2" ID="FormAprobacionInput" value="<%= Prospecto.Resolucion %>" disabled>
+                                            <option value="Blank"<% if (Prospecto.Resolucion === '') { %> selected <% } %>></option>
+                                            <option value="Aprobado" <% if (Prospecto.Resolucion === 'Aprobado') { %> selected <% } %>>Aprobado</option>
+                                            <option value="Rechazado" <% if (Prospecto.Resolucion === 'Rechazado') { %> selected <% } %>>Rechazado</option>
+                                            <option value="Observado" <% if (Prospecto.Resolucion === 'Observado') { %> selected <% } %>>Observado</option>
+                                        </select>
+                                    <% } else if(user.Cliente_Empleado === 3 && Prospecto.ID_Empleado_Comercial !== null) { %>
+                                        <select type="text" class="form-control input__bg p-0 ms-0 me-0 ps-2" ID="FormAprobacionInput" value="<%= Prospecto.Resolucion %>">
+                                            <option value="Blank"<% if (Prospecto.Resolucion === '') { %> selected <% } %>></option>
+                                            <option value="Aprobado">Aprobado</option>
+                                            <option value="Rechazado">Rechazado</option>
+                                            <option value="Observado">Observado</option>
+                                        </select>
+                                    <% } else { %>
+                                        <input type="text" class="form-control input__bg text-center p-0 ms-0 me-0 ps-2" ID="FormAprobacionInput" name="Aceptacion" value="<%= Prospecto.Resolucion %>" disabled>
+                                    <% } %>
+                                </div>
+                                <div class="form__campo_container">
+                                    <label  class="form__campo_label" for="FormInput">Descripción Necesidad</label>
+                                    <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" ID="FormDesProjectInput" name="descripcion" disabled><%= Prospecto.descNecesidad %></textarea>
+                                </div>
+                                <div class="form__campo_container">
+                                    <label  class="form__campo_label" for="FormInput">Especificación Técnica</label>
+                                    <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" ID="FormTecProjectInput" name="espTecnica" disabled><%= Prospecto.especificacionTec %></textarea>
+                                </div>
+                                <% if (user.Cliente_Empleado === 2 && Prospecto.ID_Empleado_Tecnico !== null) { %>
+                                    <div class="form__campo_container">
+                                        <label  class="form__campo_label" for="FormInput">Propuesta Tecnica</label>
+                                        <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" ID="FormPropuestaTecnicaProjectInput" name="descripcion"><%= Prospecto.propTec %></textarea>
+                                    </div>
+                                <% } else { %>
+                                    <div class="form__campo_container">
+                                        <label  class="form__campo_label" for="FormInput">Propuesta Tecnica</label>
+                                        <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" ID="FormPropuestaTecnicaProjectInput" name="descripcion" disabled><%= Prospecto.propTec %></textarea>
+                                    </div>
+                                <% } %>
+                                <div  class="form__campo_container form__campo_container_Archivo">
+                                    <label  class="form__campo_label" for="FormInput">Documentos Adicionales</label>
+                                    <div class="form__campo_docAdicionales">
+                                        <div class="form-control input__bg p-0 ms-0 me-0 ps-2" aria-disabled="true">
+                                            <% if (Prospecto.Archivo && Prospecto.Archivo.length > 0) { %>
+                                                <% Prospecto.Archivo.forEach((Archivo) => { %>
+                                                    <% const nombreArchivo = Archivo.ruta.match(/-(.+)$/)[1]; %>
+                                                    <p>
+                                                        <span class="icono-Archivo">
+                                                            <%= obtenerIconoPorExtension(nombreArchivo) %>
+                                                        </span>
+                                                        <%= nombreArchivo %>
+                                                    </p>
+                                                <% }); %>
+                                            <% } else { %>
+                                                <p>No hay documentos adicionales</p>
+                                            <% } %>
+                                        </div>
+                                        <% if(user.Cliente_Empleado === 2 && Prospecto.ID_Empleado_Tecnico !== null) { %>
+                                            <% if(Prospecto.propTec && Prospecto.propTec.length > 0) { %>
+                                                <button type="submit" class="btn btn-secondary mt-2" id="modicarProspectoTec" data-ID_Prospecto="<%= Prospecto.ID_Prospecto %>" >Enviar Cambios</button>
+                                            <% } else { %>
+                                                <button type="submit" class="btn btn-secondary mt-2" id="modicarProspectoTec" data-ID_Prospecto="<%= Prospecto.ID_Prospecto %>" disabled>Enviar Cambios</button>
+                                            <% } %>
+                                        <% } else if (user.Cliente_Empleado === 3 && Prospecto.ID_Empleado_Comercial !== null) { %> 
+                                            <% if (Prospecto.Aceptacion && Prospecto.Aceptacion.length > 0) { %>
+                                                <button type="submit" class="btn btn-secondary mt-2" id="modificarProspectoCom" data-ID_Prospecto="<%= Prospecto.ID_Prospecto %>">Enviar Cambios</button>
+                                            <% } else { %>
+                                                <button type="submit" class="btn btn-secondary mt-2" id="modicarProspectoCom" data-ID_Prospecto="<%= Prospecto.ID_Prospecto %>" disabled>Enviar Cambios</button>
+                                            <% } %>
+                                        <% } %>
+                                                                             
+                                        <% if(user.Cliente_Empleado === 2 && Prospecto.ID_Empleado_Tecnico === null) { %>
+                                            <div class="btn__Estado">
+                                                <button type="submit" class="btn btn-primary mt-2" id="RechazarProspecto"><a href="/ruta/ProspectoDisponibles/" class="text-decoration-none text-danger">Rechazar</a></button>
+                                                <button type="submit" class="btn btn-secondary mt-2 text-primary" id="AceptarProspecto" data-ID_Prospecto="<%= Prospecto.ID_Prospecto %>" data-Cliente_Empleado="<%= user.Cliente_Empleado %>" data-Correo="<%= Usuario.Correo %>">Aceptar</button>
+                                            </div>
+                                        <% } else if(user.Cliente_Empleado === 3 && Prospecto.ID_Empleado_Comercial === null) { %>
+                                            <div class="btn__Estado">
+                                                <button type="submit" class="btn btn-primary mt-2" id="RechazarProspecto"><a href="/ruta/ProspectoDisponibles/" class="text-decoration-none text-danger">Rechazar</a></button>
+                                                <button type="submit" class="btn btn-secondary mt-2 text-primary" id="AceptarProspecto" data-ID_Prospecto="<%= Prospecto.ID_Prospecto %>" data-Cliente_Empleado="<%= user.Cliente_Empleado %>" data-Correo="<%= Usuario.Correo %>">Aceptar</button>
+                                            </div>
+                                        <% }  %>
+                                    </div>
+                                </div>
+                            </form>
+                        <% } %>
             </section>
         </div>
     </section>
 </main>
-
+<script src="/js/sidebar.js"></script>    
+<script src="/scripts/ListenerModificarProspecto.js"></script>
+<script src="/scripts/ListanerAceptarProspecto.js"></script>
 <%- include('../partials/footer'); %>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var propuestaTecnicaInput = document.getElementById('FormPropuestaTecnicaProjectInput');
+        var modificarProspectoButton = document.getElementById('modicarProspectoTec');
+        console.log(propuestaTecnicaInput.value);
+        function toggleModProspectoButton() {
+            modificarProspectoButton.disabled = propuestaTecnicaInput.value.trim() === '';
+        }
+    
+        propuestaTecnicaInput.addEventListener('input', toggleModProspectoButton);
+        toggleModProspectoButton();
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const aceptacionInput = document.getElementById('FormAprobacionInput');
+        const modificarProspectoButton = document.getElementById('modicarProspectoCom');
+        console.log(aceptacionInput);
+        function toggleButtonState() {
+            modificarProspectoButton.disabled = aceptacionInput.value.trim() === 'Blank';
+        }
+        aceptacionInput.addEventListener('change', toggleButtonState);
+        toggleButtonState();
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        console.log("Iniciando script...");
+        const inputPresupuesto = document.getElementById("FormMoneyProjetInput");
+        console.log("Obteniendo el valor del campo inputPresupuesto:", inputPresupuesto.value);
+    
+        function formatearPresupuesto(numero) {
+            console.log("Formateando presupuesto:", numero);
+            const valorFormateado = numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            console.log("Valor formateado:", valorFormateado);
+            return valorFormateado;
+        }
+    
+        inputPresupuesto.value = formatearPresupuesto(inputPresupuesto.value);
+        console.log("Asignando el valor formateado al campo inputPresupuesto.");
+    });
+    </script>
+
+
+<% 
+    function obtenerIconoPorExtension(nombreArchivo) {
+    const extension = nombreArchivo.split('.').pop().toLowerCase();
+    switch (extension) {
+        case 'pdf':
+            return '📄';
+        case 'jpg':
+        case 'jpeg':
+        case 'png':
+            return '🖼️';
+        case 'doc':
+        case 'docx':
+            return '📃';
+        case 'xls':
+        case 'xlsx':
+            return '📊';
+        case 'ppt':
+        case 'pptx':
+            return '📽️';
+        case 'mp3':
+            return '🎵';
+        case 'mp4':
+            return '🎥';
+        case 'txt':
+            return '📝';
+        case 'zip':
+        case 'rar':
+            return '📚';
+        case 'html':
+        case 'htm':
+            return '🌐';
+        case 'css':
+            return '🎨';
+        case 'js':
+            return '🔧';
+        case 'json':
+            return '📋';
+        case 'xml':
+            return '📄';
+        case 'svg':
+            return '🖋️';
+        case 'exe':
+            return '⚙️';
+        default:
+            return '📂';
+    }
+}
+
+%>

@@ -10,31 +10,36 @@
     border: solid 1px #fff;
     display: grid;
     grid-template-rows: auto 1fr;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .main__header{
     border-bottom: solid 1px #fff;
 }
 
-.btn{
-    background-color: #000;
-    border: solid 2px #fff;
+.btn {
+    /* border: solid 2px #fff; */
     color: var(--color-white);
+    transition: background-color 0.3s ease; /* Agrega una transición suave para el cambio de color de fondo */
 }
 
-.btn:hover{
-    background-color: var(--color-white);
+.btn:hover {
+    background-color: #126132; /* Tono más oscuro de verde cuando el mouse está sobre el botón */
     border: solid 2px #fff;
     color: var(--color-black);
 }
-
 
 .btn-primary {
     width: 100%;
     background-color: var(--color-black); /* Fondo negro */
     border: 1px solid #fff; /* Borde blanco */
     color: var(--color-white); /* Texto blanco */
+    transition: background-color 1s ease, border-color 0.5s ease; /* Transiciones suaves para el fondo y el borde */
+}
+
+.btn-primary:hover {
+    background-color: rgba(255, 255, 255); /* Fondo blanco semi-transparente al pasar el mouse */
+    border-color: rgba(255, 255, 255, 0.5); /* Borde blanco semi-transparente al pasar el mouse */
 }
 
 .input__bg {
@@ -103,7 +108,7 @@ textarea{
     transition: background-color 5000s ease-in-out 0s;
 }
 
-.form__crearProspecto{
+.form__Prospecto{
     display: grid;
     grid-template-columns: repeat(3, 30%);
     grid-template-rows: auto 1fr;
@@ -122,19 +127,13 @@ textarea{
     grid-template-rows: 30px 45px;
 }
 
-.input__crearProspecto_files{
-    display: grid;
-    grid-template-rows: 1fr 50px;
-    align-content: space-between;
-    row-gap: 15px;
-}
 
 @media(max-width:768px){
 
     .sidebar__container{
         height: fit-content;
     }
-    .form__crearProspecto{
+    .form__Prospecto{
         grid-template-columns: none;
         justify-content: normal;
         grid-template-rows: repeat(6, auto);
@@ -146,4 +145,67 @@ textarea{
     textarea{
         height: 90px !important;
     }
+}
+
+
+.form-control.input__bg:not(:disabled) {
+    border: 1px solid #ccc;
+    color: white;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.form-control.input__bg:not(:disabled):hover {
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.7);
+}
+
+.form-control.input__bg:not(:disabled):focus,
+.form-control.input__bg:not(:disabled):active {
+    box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 1);
+}
+
+.form__campo_container_show-sidebar {
+    grid-template-rows: 50px!important;
+}
+.form__campo_docAdicionales{
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+.form__campo_docAdicionales .input__bg{
+    height: 100%;
+}
+
+
+
+.main__section::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra de desplazamiento */
+    transition: background-color 0.5s ease; /* Transición suave para el cambio de color */
+    
+}
+
+.main__section::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3); /* Color semi-transparente del "pulgar" de la barra de desplazamiento */
+    border-radius: 5px; /* Bordes redondeados para el "pulgar" */
+    transition: background-color 0.5s ease; /* Transición suave para el cambio de color */
+}
+
+.main__section::-webkit-scrollbar-thumb:hover {
+    background-color: #fff; /* Color blanco del "pulgar" al pasar el mouse */
+    animation: changeColor 2s infinite alternate; /* Animación para cambiar gradualmente el color */
+}
+
+.main__section::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.2); /* Color semi-transparente del fondo de la barra de desplazamiento */
+}
+
+.main__header h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.main__header h2 > span.fs-5.display-2 {
+    text-align: right;
 }

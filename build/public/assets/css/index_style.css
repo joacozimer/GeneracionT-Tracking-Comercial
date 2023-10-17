@@ -156,3 +156,47 @@ body{
         font-size: small;
     }
 }
+
+input[type="password"].form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+input[type="email"].form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.w-100.form-control {
+    outline: none;
+    box-shadow: none;
+}
+
+#FormNameInput{
+    outline: none;
+    box-shadow: none;
+}
+
+#FormSurnameInput{
+    outline: none;
+    box-shadow: none;
+}
+
+#FormDayInput{
+    outline: none;
+    box-shadow: none;
+}
+
+#FormMonthInput{
+    outline: none;
+    box-shadow: none;
+}
+
+#FormYearInput{
+    outline: none;
+    box-shadow: none;
+}
+
+
+
+

@@ -8,31 +8,31 @@
             </section>
             <section class="main__body ms-4 me-4 mt-2 mb-4">
                 <form enctype="multipart/form-data" class="form__crearProspecto mt-2">
-                    <div class="form__campo_container_1">
-                        <label  class="form__campo_label" for="FormInput">Nombre Proyecto</label>
-                        <input type="text" class="form-control input__bg p-0 ms-0 me-0 ps-2" id="FormNameProjectInput" name="nombre">
+                    <div class="form__campo_container form__campo_container_1">
+                        <label  class="form__campo_label" for="FormInput">Nombre Prospecto</label>
+                        <input type="text" class="form-control input__bg p-0 ms-0 me-0 ps-2" ID="FormNameProjectInput" name="nombre">
                     </div>
-                    <div  class="form__campo_container_1">
-                        <label  class="form__campo_label" for="FormInput">Plazo de tiempo</label>
-                        <input type="date" class="form-control input__bg text-center p-0 ms-0 me-0 ps-2" id="FormTimeProjectInput" min="" name="plazo">
+                    <div  class="form__campo_container form__campo_container_1">
+                        <label  class="form__campo_label" for="FormInput">Plazo de tiempo estimado</label>
+                        <input type="date" class="form-control input__bg text-center p-0 ms-0 me-0 ps-2" ID="FormTimeProjectInput" min="" name="plazo">
                     </div>
-                    <div class="form__campo_container_1">
+                    <div class="form__campo_container form__campo_container_1">
                         <label  class="form__campo_label" for="FormInput">Presupuesto</label> 
-                        <input type="number" class="form-control input__bg  p-0 ms-0 me-0 ps-2" id="FormMoneyProjetInput" name="presupuesto">
-                    </div>
-                    <div class="form__campo_container">
-                        <label  class="form__campo_label" for="FormInput">Especificación Técnica</label>
-                        <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" id="FormTecProjectInput" name="espTecnica"></textarea>
+                        <input type="text" class="form-control input__bg  p-0 ms-0 me-0 ps-2" ID="FormMoneyProjetInput" name="presupuesto">
                     </div>
                     <div class="form__campo_container">
                         <label  class="form__campo_label" for="FormInput">Descripción Necesidad</label>
-                        <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" id="FormDesProjectInput" name="descripcion"></textarea>
+                        <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" ID="FormDesProjectInput" name="descripcion"></textarea>
+                    </div> 
+                    <div class="form__campo_container">
+                        <label  class="form__campo_label" for="FormInput">Especificación Técnica</label>
+                        <textarea class="form-control input__bg  p-0 ms-0 me-0 ps-2" ID="FormTecProjectInput" name="espTecnica"></textarea>
                     </div>
                     <div  class="form__campo_container">
                         <label  class="form__campo_label" for="FormInput">Documentos Adicionales</label>
                         <div class="input__crearProspecto_files">
-                            <input type="file" class="form-control input__bg  p-0 ms-0 me-0 ps-2" id="FormFileInput" name="archivos" multiple>
-                            <button id="nuevoProspecto" type="submit" class="btn btn-primary mt-2" >Crear Prospecto</button>
+                            <input type="file" class="form-control input__bg  p-0 ms-0 me-0 ps-2" ID="FormFileInput" name="Archivo" multiple>
+                            <button ID="nuevoProspecto" type="submit" class="btn btn-primary mt-2" >Crear Prospecto</button>
                         </div>
                     </div>
                 </form>
@@ -44,3 +44,20 @@
 <script src="/js/sidebar.js"></script>    
 <script src="/js/crearProspecto.js"></script>
 <%- include('../partials/footer'); %>
+
+<script>
+    const input = document.getElementById('FormMoneyProjetInput');
+input.addEventListener('input', function(event) {
+    let value = event.target.value;
+
+    // Eliminar cualquier carácter que no sea un número
+    value = value.replace(/\D/g, '');
+
+    // Formatear el número con puntos para separar los miles
+    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+    // Actualizar el valor del campo
+    event.target.value = value;
+});
+
+</script>

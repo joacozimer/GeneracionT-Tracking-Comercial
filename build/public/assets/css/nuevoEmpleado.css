@@ -1,0 +1,65 @@
+/* Estilos para la sección de contenido */
+.content {
+    padding: 20px;
+    
+}
+
+.container__cards {
+    max-width: 500px;
+    margin: 100px auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: black;
+}
+
+.Empleado{
+    color: black;
+}
+
+.texto{
+    color: white;
+}
+
+/* Estilos para la barra de desplazamiento */
+.container__cards::-webkit-scrollbar {
+    width: 10px;
+}
+
+.container__cards::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+}
+
+.container__cards::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.container__cards::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+#nuevoEmpleadoForm > .container__cards > button[type="submit"]:hover{
+    color: black;
+}
+
+#nuevoEmpleadoForm input#Correo{
+    color: black;
+}
