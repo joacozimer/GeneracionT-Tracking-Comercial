@@ -6,10 +6,11 @@ const app = express();
 let connection;
 try {
   connection = await mysql.createConnection({
-    host: 'localhost',
-    database: 'db_tracking_comercial',
-    user: 'root',
-    password: '',
+    host: 'sql10.freemysqlhosting.net',
+    database: 'sql10653891',
+    user: 'sql10653891',
+    password: 'SzGAPcBkel',
+    port:3306
   });
 } catch (error) {
   console.log("error conectandose a la bd");

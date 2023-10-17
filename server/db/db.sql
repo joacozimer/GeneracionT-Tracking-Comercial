@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS Tipo_Empleado(
 );
 
 CREATE TABLE IF NOT EXISTS Usuario(
-    Correo VARCHAR(255) PRIMARY KEY NOT NULL,
+    Correo VARCHAR(170) PRIMARY KEY NOT NULL,
     nombre VARCHAR(255) NOT NULL,
     apellido VARCHAR(255) NOT NULL,
     contrasenia VARCHAR(255) NOT NULL,
@@ -102,7 +102,7 @@ DROP PROCEDURE IF EXISTS MoverUsuarioDeClienteAEmpleado;
 
 DELIMITER //
 CREATE PROCEDURE MoverUsuarioDeClienteAEmpleado(
-    IN Correo_Usuario VARCHAR(255),
+    IN Correo_Usuario VARCHAR(170),
     IN Cliente_Empleado INT
 )
 BEGIN
