@@ -18,7 +18,17 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 7777;
-
+app.use((req, res, next) => {
+  // Generar un nonce aleatorio y único para esta solicitud
+  const nonce = crypto.randomBytes(16).toString('base64'); // Puedes ajustar la longitud según tus necesidades
+  
+  // Configurar la directiva Content-Security-Policy con el nonce generado
+  res.setHeader('Content-Security-Policy', "script-src 'nonce-" + nonce + "'");
+  
+  // Pasar el nonce a las plantillas o rutas si es necesario
+  res.locals.nonce = nonce;
+  next();
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
