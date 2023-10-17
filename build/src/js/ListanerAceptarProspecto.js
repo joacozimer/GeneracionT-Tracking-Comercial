@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const Correo = aceptarBtn.getAttribute('data-correo');
 
         try {
-            const response = await fetch(`http://localhost:7777/asignarProspecto/${ID_Prospecto}/${Cliente_Empleado}/${Correo}`, {
+            const response = await fetch(`https://generaciont-tracking-comercial-dev-apde.2.us-1.fl0.io/asignarProspecto/${ID_Prospecto}/${Cliente_Empleado}/${Correo}`, {
                 method: 'POST'
             });
             if(response.status == 200){

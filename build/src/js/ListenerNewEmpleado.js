@@ -11,7 +11,7 @@ document.getElementById('nuevoEmpleadoForm').addEventListener('submit', async fu
         })
     } else {
         try {
-            const response = await fetch(`http://localhost:7777/nuevoEmpleado/${Correo}/${Tipo_Empleado}`, {
+            const response = await fetch(`https://generaciont-tracking-comercial-dev-apde.2.us-1.fl0.io/nuevoEmpleado/${Correo}/${Tipo_Empleado}`, {
                 method: 'POST'
             });
             if(response.status == 200){

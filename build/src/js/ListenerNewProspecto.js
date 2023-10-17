@@ -41,7 +41,7 @@ document.getElementById('nuevoProspecto').addEventListener('click', async functi
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = await fetch('http://localhost:7777/newProspecto', {
+                    const response = await fetch('https://generaciont-tracking-comercial-dev-apde.2.us-1.fl0.io/newProspecto', {
                         method: 'POST',
                         body: formData
                     });
@@ -83,7 +83,7 @@ document.getElementById('nuevoProspecto').addEventListener('click', async functi
         });
     }else{
         try {
-            const response = await fetch('http://localhost:7777/newProspecto', {
+            const response = await fetch('https://generaciont-tracking-comercial-dev-apde.2.us-1.fl0.io/newProspecto', {
                 method: 'POST',
                 body: formData
             });
