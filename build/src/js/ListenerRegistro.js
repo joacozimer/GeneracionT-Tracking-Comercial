@@ -38,8 +38,8 @@ document.getElementById('formReg').addEventListener('submit', async function(eve
   
         if (res.ok) {
           Swal.fire({
-            title: 'Prospecto creado',
-            text: 'El prospecto se ha creado exitosamente.',
+            title: 'Usuario Creado Exitosamente',
+            text: 'El usuario se ha creado exitosamente, intentente iniciar sesion.',
             icon: 'success',
             showConfirmButton: false,
             timer: 1000

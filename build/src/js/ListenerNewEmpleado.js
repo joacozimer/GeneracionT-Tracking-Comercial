@@ -22,8 +22,8 @@ document.getElementById('nuevoEmpleadoForm').addEventListener('submit', async fu
                 return;
             } else if(response.status == 201) {
                 Swal.fire({
-                    title: 'Prospecto creado',
-                    text: 'El prospecto se ha creado exitosamente.',
+                    title: 'Nuevo Miembro Exitoso',
+                    text: 'El nuevo miembro se ah creado correctamente, visita miembros para ver los cambios.',
                     icon: 'success',
                     showConfirmButton: false,
                     timer: 1000
